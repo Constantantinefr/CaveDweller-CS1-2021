@@ -1,71 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cavedweller;
 
 /**
  *
- * @author jword
+ * @author constantine
  */
 public class Caveman {
-    //Fields / Instance variables
+   //Fields - insance variables
     private String name;
-    private int hp, x, y;
+    private int x, y, hp;
     private boolean hasKey;
-    
     //Constructor
-    public Caveman(String name, int x, int y) {
-        this.hp = 100;
-        this.hasKey = false;
+    public Caveman (String name, int x, int y) {
         this.name = name;
         this.x = x;
         this.y = y;
+        this.hp = 100;
+        this.hasKey = false;
     }
-    //Methods
-    public void speak() {
-        System.out.println("Grr");
-    }
+
     
-    public String toString() {
+    //methods
+    public void speak() {
+    System.out.println("Ugh");
+    }
+    public String toStrig() {
         return "x: "+x+", y: "+y;
     }
-    
     public void moveUp() {
-        //y tracks how far down
         y -= 1;
     }
-    
     public void moveDown() {
         y += 1;
     }
-    
-    public void moveLeft() {
-        x -= 1;
+    public void eat(Food food) {
+        this.hp +=food.getNourishment();
+        food.setEaten(true);
+        System.out.println("Me eat "+food.getName());
     }
-    
     public void moveRight() {
         x += 1;
     }
-    
-    public void eat(Food food) {
-        hp += food.getHPChange();
+    public void moveLeft() {
+        x -= 1;
     }
-    
-    //Accessors - getters & setters
-    public void setHP(int hp) {
-        if (hp <= 100 && hp >= 0) {
-            this.hp = hp;
-        }
-    }
-
     public String getName() {
         return name;
     }
-
-    public int getHP() {
+    public int getHp() {
         return hp;
+    }
+    public void setHp(int hp) {
+        if (hp >= 0 && hp <= 100) {
+        this.hp = hp;
+        }
     }
 
     public int getX() {
@@ -79,6 +67,5 @@ public class Caveman {
     public boolean isHasKey() {
         return hasKey;
     }
-    
-    
 }
+     //Accessors - getters and setters
